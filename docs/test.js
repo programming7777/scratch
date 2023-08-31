@@ -1,31 +1,24 @@
-// Core, Team, and Official extensions can `require` VM code:
-const ArgumentType = require('../../extension-support/argument-type');
-const BlockType = require('../../extension-support/block-type');
+class Test {
 
-class SomeBlocks {
-    // ...
-    getInfo () {
-        return {
-            id: 'someBlocks',
-            name: 'Some Blocks',
-            blocks: [
-                {
-                    opcode: 'myReporter',
-                    blockType: BlockType.REPORTER,
-                    text: 'letter [LETTER_NUM] of [TEXT]',
-                    arguments: {
-                        LETTER_NUM: {
-                            type: ArgumentType.STRING,
-                            defaultValue: '1'
-                        },
-                        TEXT: {
-                            type: ArgumentType.STRING,
-                            defaultValue: 'text'
-                        }
-                    }
-                }
-            ]
-        };
+  constructor() {}
+
+  getInfo() { // 拡張機能の各種情報
+    return {
+      id: 'test',
+      name: 'Test', // 拡張機能の名前
+      blocks: [ // 各ブロックの定義
+        {
+          opcode: 'hello', // このブロックが実行されると、helloという関数が呼ばれる
+          blockType: Scratch.BlockType.COMMAND,　// 「10歩動かす」のような通常の命令ブロック
+          text: 'hello' // ブロックに表示されるテキスト
+        }
+      ]
     }
-    // ...
+  }
+
+  hello() {
+    alert('hello'); // console log に hello と出力
+  }
 }
+
+Scratch.extensions.register(new Test());
