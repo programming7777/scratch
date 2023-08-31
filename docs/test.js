@@ -8,7 +8,7 @@ class Test {
 				{
 					opcode: 'hello',
 					blockType: Scratch.BlockType.COMMAND,
-          text: 'hello'
+					text: 'hello'
 				}
 			]
 		}
